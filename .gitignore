@@ -1,1 +1,3 @@
 .DS_Store
+.claude/skills/*-workspace
+.claude/scheduled_tasks.lock

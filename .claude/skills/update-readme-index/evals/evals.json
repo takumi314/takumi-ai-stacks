@@ -1,0 +1,63 @@
+{
+  "skill_name": "update-readme-index",
+  "evals": [
+    {
+      "id": 1,
+      "name": "add-new-skill",
+      "prompt": "skills/ に gh-issue-linker という新しいスキルを追加しました。README.md のskill一覧に反映してください。",
+      "expected_output": "README.md の「skill 一覧」テーブルに gh-issue-linker の行が1行追加される。既存の auto-commit-msg 行や末尾の注記文はそのまま残る。",
+      "files": [],
+      "assertions": [
+        "README.md の skill 一覧テーブルに gh-issue-linker の行が新規追加されている",
+        "gh-issue-linker の行のリンクが skills/gh-issue-linker/SKILL.md を指している",
+        "説明列がGitHub Issue番号の紐付けという趣旨を表している",
+        "利用場面列に、SKILL.mdのdescriptionにある発話例（『Issueと紐付けて』等）が反映されている",
+        "既存の auto-commit-msg の行が変更・削除されずそのまま残っている",
+        "テーブル末尾の『skill を追加したら、この表に1行追記してください。』という注記文が残っている",
+        "README.md の「利用方法」「格納ルール」など一覧テーブル以外のセクションが変更されていない"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "add-first-rule",
+      "prompt": "rules/ に commit-branch-naming.md という最初のルールを追加しました。README.md のルール一覧を更新してください。",
+      "expected_output": "README.md の「rules 一覧」セクションが『現時点で空です』という文からテーブル形式（ルール名/説明/適用対象）に置き換わり、commit-branch-naming の行が入る。",
+      "files": [],
+      "assertions": [
+        "rules 一覧セクションが、テーブルヘッダーと commit-branch-naming の行を含むテーブル形式に置き換わっている",
+        "『現時点で `rules/` は空です』という古い文言が残っていない",
+        "commit-branch-naming の行のリンクが rules/commit-branch-naming.md を指している",
+        "説明列がブランチ命名規約（feature/, fix/, chore/ プレフィックス）という趣旨を表している",
+        "rules 一覧の下に、今後の追加を促す注記文（skill一覧の『追加したら1行追記してください』に相当するもの）がある",
+        "skill 一覧セクションなど他のセクションが変更されていない"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "update-existing-skill-description",
+      "prompt": "auto-commit-msg のSKILL.md descriptionをBreaking Changes自動検出の文言を含むように更新しました。README.md のskill一覧の説明もあわせて直してください。",
+      "expected_output": "README.md の「skill 一覧」テーブルの auto-commit-msg 行が更新され、Breaking Changes自動検出の内容が説明に反映される。新しい行は追加されず、既存の1行が更新される。",
+      "files": [],
+      "assertions": [
+        "skill 一覧テーブルの auto-commit-msg の行が1行のまま（重複行が追加されていない）",
+        "auto-commit-msg 行の説明列に Breaking Changes 自動検出に関する内容が追加・反映されている",
+        "auto-commit-msg 行の利用場面列の内容が保持されている（不要に消えていない）",
+        "テーブルの行の順序・他の行（もしあれば）が壊れていない",
+        "README.md の一覧テーブル以外の部分が変更されていない"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "ignore-unrelated-directory",
+      "prompt": "docs/architecture.md という新しいドキュメントを追加しました。README.md を確認して、必要なら更新してください。",
+      "expected_output": "skills/, rules/ に該当する変更がないため、README.md は一切変更されない。skill一覧・rules一覧のテーブルもそのまま。対象の変更が見当たらない旨が報告される。",
+      "files": [],
+      "assertions": [
+        "README.md の内容が変更前と完全に一致している（一覧テーブルを含め一切変更されていない）",
+        "実行結果の報告に、skills/・rules/ に該当する変更が見当たらない、またはこのスキルの対象外である旨が含まれている",
+        "skill 一覧・rules 一覧のテーブルに新しい行が追加されていない",
+        "docs/architecture.md の内容を要約・反映しようとする記述がREADME.mdに追加されていない"
+      ]
+    }
+  ]
+}
