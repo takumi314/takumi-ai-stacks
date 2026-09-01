@@ -34,8 +34,10 @@ skill を追加したら、この表に1行追記してください。
 | [security](rules/security.md) | シークレット管理・通信・入力検証・ログ出力・依存関係の基本要件を規定する | 言語・プラットフォームを問わず全プロジェクト |
 | [sourcekit-lsp-troubleshooting](rules/sourcekit-lsp-troubleshooting.md) | エディタ診断とビルド結果が食い違う場合に、何を実行してから判断するかを規定する | SPM + SourceKit-LSP の診断表示 |
 | [swift](rules/swift.md) | 命名・インデント・アクセス制御・型安全性など Swift の基本規約を規定する | `.swift` ファイル全般 |
+| [swift-clean-code](rules/swift-clean-code.md) | 命名の質・関数の責務や抽象度・データ構造設計など、関数/型内部に閉じる可読性の観点を規定する | `.swift` ファイル全般（命名・関数分割・データ設計のレビュー観点） |
 | [swift-concurrency](rules/swift-concurrency.md) | `Sendable` 適合、`@MainActor` 型の deinit、`nonisolated` の境界、GCD からの移行を規定する | Swift 6 言語モードの並行コード |
 | [swift-error](rules/swift-error.md) | `throws` / `Result` / `Optional` の使い分けと禁止パターンを規定する | エラーが発生しうる処理全般 |
+| [swift-solid](rules/swift-solid.md) | 継承よりコンポジション、条件分岐よりポリモーフィズム、SOLID 各原則など型同士の関係レベルの設計判断を規定する | `class` / `struct` / `protocol` の新規設計・既存型階層の変更 |
 | [swift-syntax](rules/swift-syntax.md) | `Sendable` 境界、offset 整合、置換テキストの構文非破壊検査を規定する | SwiftSyntax / SwiftParser を使うソース |
 | [swift-test](rules/swift-test.md) | Swift Testing の使用、テスト命名、AAA パターン、モック設計を規定する | `Tests/` 配下のテストコード |
 | [swiftui-view](rules/swiftui-view.md) | View の分割、Asset Catalog による Color 指定、Text Style、State 管理を規定する | SwiftUI View の実装 |
