@@ -1,11 +1,14 @@
 # takumi-ai-stacks
 
-Claude Code 用の skill 定義・ルールをストックし、バージョン管理するためのリポジトリです。
+Claude Code 用の skill 定義・ルール・プロジェクトテンプレートをストックし、バージョン管理するための
+リポジトリです。
 
 ## 利用方法
 
 `skills/*` は `~/.claude/skills/` に、`rules/*` は `~/.claude/rules/` に配置して使う想定です。
-現状はファイルコピーによる手動同期の運用です（symlink ではありません）。
+`templates/*` は `~/.claude/` 配下ではなく、**開発対象プロジェクトのルート** にコピーして使う
+ファイル（例: `CLAUDE.md`）です。現状はいずれもファイルコピーによる手動同期の運用です
+（symlink ではありません）。
 
 ```sh
 # 必要な skill だけをコピーする例
@@ -13,6 +16,9 @@ cp -r skills/auto-commit-msg ~/.claude/skills/
 
 # 必要な rule だけをコピーする例
 cp rules/<rule-name>.md ~/.claude/rules/
+
+# テンプレートを開発対象プロジェクトへコピーする例
+cp templates/CLAUDE.md <project-root>/CLAUDE.md
 ```
 
 新しい環境でこのリポジトリを使い始める場合は、リポジトリを clone した上で、上記のように必要な
@@ -45,7 +51,15 @@ skill を追加したら、この表に1行追記してください。
 
 ルールを追加したら、この表に1行追記してください。
 
-## 新しい skill / rule を追加する際の格納ルール
+## templates 一覧
+
+| テンプレート名 | 説明 | 配置先 |
+| --- | --- | --- |
+| [CLAUDE.md](templates/CLAUDE.md) | iOS 開発プロジェクト向けの CLAUDE.md サンプル。iOS Project Guide・開発環境・CRITICAL RULES・Build/Test コマンド・Workflow Hook を含む | `<project-root>/CLAUDE.md` |
+
+テンプレートを追加したら、この表に1行追記してください。
+
+## 新しい skill / rule / template を追加する際の格納ルール
 
 ### skill の追加
 
@@ -53,7 +67,8 @@ skill を追加したら、この表に1行追記してください。
 - `SKILL.md` の frontmatter（`name`, `description`）を正しく記述し、`description` にはどんな
   ユーザー発話で起動すべきかを具体的に書く
 - 追加したら本 README の [skill 一覧](#skill-一覧) に1行追記する
-- 詳細な構成規約（`conventions.md` や `examples/` の使い分けなど）は [CLAUDE.md](CLAUDE.md) を参照
+- 詳細な規約（type/scope の定義など）は `SKILL.md` から `conventions.md` に切り出してよい。
+  動作例は `examples/` に置く
 
 ### rules の追加
 
@@ -74,6 +89,13 @@ skill を追加したら、この表に1行追記してください。
 
 - 追加したら本 README の [rules 一覧](#rules-一覧) に追記する
 
+### templates の追加
+
+- `templates/<template-name>` の形式で追加する（単一ファイルでもディレクトリでもよい）
+- 実際の開発プロジェクトのルートにコピーして使うことを前提とし、環境固有の値は
+  `<...>` プレースホルダーで明示する
+- 追加したら本 README の [templates 一覧](#templates-一覧) に1行追記する
+
 ## 今後の方針
 
-今後 `skills/` や `rules/` に活用できるものを追加し、内容を充実させていく予定です。
+今後 `skills/` や `rules/`、`templates/` に活用できるものを追加し、内容を充実させていく予定です。
