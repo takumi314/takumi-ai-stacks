@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(swift test)",
+      "Bash(cat *)",
+      "Bash(swift build)",
+      "Bash(xcodebuild -scheme * -destination 'platform=iOS Simulator,*' build)",
+      "Bash(find *)",
+      "Bash(grep *)",
+      "Read"
+    ],
+    "ask": [],
+    "deny": [
+      "Bash(rm -rf *)"
+    ]
+  }
+}
